@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Квиз по дискретной математике</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Квиз: дискретная математика</h1>
+
+    <div id="level-container">
+      Уровень:
+      <select id="level-select">
+        <option value="0">Легкий</option>
+        <option value="1">Средний</option>
+        <option value="2">Сложный</option>
+      </select>
+    </div>
+
+    <div id="lives-container">
+      Жизни: <span id="lives">❤️❤️❤️</span>
+    </div>
+
+    <div id="progress-container">
+      Прогресс: <progress id="progress" value="0" max="0"></progress>
+      <span id="progress-text"></span>
+    </div>
+
+    <div id="timer">Время: <span id="time">20</span> сек</div>
+
+    <div id="question"></div>
+    <div id="answers"></div>
+
+    <div id="result"></div>
+
+    <button id="next-btn" style="display:none;">Следующий вопрос</button>
+  </div>
+
+  <!-- Звуки -->
+  <audio id="sound-correct" src="sounds/correct.mp3"></audio>
+  <audio id="sound-wrong" src="sounds/wrong.mp3"></audio>
+  <audio id="sound-timeout" src="sounds/timeout.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
