@@ -1,97 +1,145 @@
+:root {
+  --bg: #f4f6f8;
+  --text: #333;
+  --btn-bg: #4a90e2;
+  --btn-hover: #357ab8;
+  --btn-next: #4caf50;
+  --btn-next-hover: #3e8e41;
+  --correct: #c8e6c9;
+  --wrong: #ffcdd2;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 480px;
-    margin: auto;
-    background: #f5f5f5;
+  font-family: sans-serif;
+  padding: 1em;
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+ */
+  user-select: none;          /* Стандарт */
+}
+
+/* Тёмная тема */
+body.dark-theme {
+  --bg: #1e1e1e;
+  --text: #f0f0f0;
+  --btn-bg: #3a70b2;
+  --btn-hover: #28568c;
+  --btn-next: #388e3c;
+  --btn-next-hover: #2e7d32;
+  --correct: #2e7d32;
+  --wrong: #c62828;
+}
+
+
+#main-menu {
+  text-align: center;
+  padding: 2em;
+}
+
+#main-menu h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+#main-menu select,
+#main-menu button {
+  font-size: 1.2em;
+  margin-top: 1em;
+  padding: 0.6em 1em;
+}
+
+#question {
+  font-size: 1.4em;
+  margin-top: 1em;
+}
+
+#answers button {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.8em 1em;
+  width: 100%;
+  font-size: 1em;
+  background-color: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#answers button:hover:not(:disabled) {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#answers button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#next-btn {
+  margin-top: 1em;
+  width: 100%;
+  font-size: 1em;
+  padding: 0.8em;
+  background-color: var(--btn-next);
+  border-radius: 12px;
+  color: white;
+  border: none;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#next-btn:hover {
+  background-color: var(--btn-next-hover);
+  transform: translateY(-2px);
+}
+
+#start-button {
+  margin-bottom: 20px;
+}
+
+#result {
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+progress {
+  width: 100%;
+  height: 20px;
+  margin: 0.5em 0;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--btn-bg);
+  border-radius: 10px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  #top-bar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  #quiz-container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
-  }
-  
-  #question {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    min-height: 50px;
-  }
-  
-  #answers button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1em;
-    cursor: pointer;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  
-  #answers button:hover:not(:disabled) {
-    background-color: #eee;
-  }
-  
-  #answers button:disabled {
-    cursor: default;
-    opacity: 0.7;
-  }
-  
-  #result {
-    margin: 10px 0;
-    min-height: 30px;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-  
-  #lives-container {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-  }
-  
-  #progress-container {
-    margin-bottom: 10px;
-  }
-  
-  #timer {
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  #level-container {
-    margin-bottom: 15px;
-  }
-  
-  button#next-btn {
-    padding: 10px 15px;
-    font-size: 1em;
-    border: none;
-    background-color: #2196f3;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button#next-btn:hover {
-    background-color: #0b7dda;
-  }
-  
-  @media (max-width: 600px) {
-    body {
-      padding: 10px;
-    }
-  
-    #quiz-container {
-      padding: 15px;
-    }
-  
-    #answers button {
-      font-size: 1.1em;
-      padding: 14px;
-    }
-  }
-  
+}
